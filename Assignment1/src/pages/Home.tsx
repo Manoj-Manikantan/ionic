@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonPopover, IonList, IonItem, IonLabel } from '@ionic/react';
 import { menu } from 'ionicons/icons';
 import HomeContainer from '../components/HomeContainer';
-import './Home.css';
 
 const Home: React.FC = () => {
 
@@ -31,7 +30,7 @@ const Home: React.FC = () => {
           onDidDismiss={e => setShowUserMenuEvent({ open: false, event: undefined })}>
           <IonContent>
             <IonList>
-              <IonItem routerLink="/aboutMe">
+              <IonItem onClick={(e) => setShowUserMenuEvent({ open: false, event: undefined })} routerLink="/aboutMe">
                 <IonLabel>About Me!</IonLabel>
               </IonItem>
             </IonList>

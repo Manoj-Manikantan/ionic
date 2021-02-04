@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { IonContent, IonPage, IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
+import { IonContent, IonPage, IonInput, IonItem, IonLabel, IonList, IonButton, IonAlert } from '@ionic/react';
 
 interface ContainerProps { }
 
 const HomeContainer: React.FC<ContainerProps> = () => {
 
+  const [showAlert, setShowAlert] = useState(false);
   const [hoursWorked, setHoursWorked] = useState<number>(0);
   const [hourRate, setHourRate] = useState<number>(0);
   const [regularPay, setRegularPay] = useState(0)
@@ -34,6 +35,7 @@ const HomeContainer: React.FC<ContainerProps> = () => {
       overtimePay === 0 ? setFinalPay(regularPay) : setFinalPay(finalPay)
       setTax(Number((tax).toFixed(2)))
     } else {
+      setShowAlert(true)
       console.log("Please fill the required inputs!")
     }
   }
@@ -60,6 +62,8 @@ const HomeContainer: React.FC<ContainerProps> = () => {
     setOvertimePay(0)
     setFinalPay(0)
     setTax(0)
+    setHoursWorked(0)
+    setHourRate(0)
   }
 
   return (
@@ -67,16 +71,24 @@ const HomeContainer: React.FC<ContainerProps> = () => {
       <IonContent>
         <IonList>
           <IonItem>
-            <IonLabel position="floating">Number of hours worked</IonLabel>
-            <IonInput onIonChange={e => setHoursWorked(parseInt(e.detail.value!))}></IonInput>
+            <IonLabel position="floating">Please enter the no of hours worked</IonLabel>
+            <IonInput type="number" value={hoursWorked} onIonChange={e => setHoursWorked(parseInt(e.detail.value!))}></IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel position="floating">Hourly rate</IonLabel>
-            <IonInput onIonChange={e => setHourRate(parseInt(e.detail.value!))}></IonInput>
+            <IonLabel position="floating">Please enter the hourly rate</IonLabel>
+            <IonInput type="number" value={hourRate} onIonChange={e => setHourRate(parseInt(e.detail.value!))}></IonInput>
           </IonItem>
         </IonList>
         <IonItem>
           <IonButton color="success" onClick={() => calculateClicked()}>Calculate</IonButton>
+          <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            cssClass='my-custom-class'
+            header={'Input Error!'}
+            message={'Please fill all required fields.'}
+            buttons={['OK']}
+          />
           <IonButton color="danger" onClick={() => clearValues()}>Clear</IonButton>
         </IonItem>
       </IonContent>

@@ -13,14 +13,14 @@ const AboutMe: React.FC<ContainerProps> = () => {
                     <IonButtons slot="start">
                         <IonBackButton defaultHref="/"></IonBackButton>
                     </IonButtons>
-                    <IonTitle>About Me!</IonTitle>
+                    <IonTitle>About Me !</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
                 <IonList>
+                    <IonItem>Assignment 1 - Pay Calculator</IonItem>
                     <IonItem>Name : Manoj Manikantan Muralidharan</IonItem>
                     <IonItem>Student ID : 301067347</IonItem>
-                    <IonItem>Assignment 1 - Pay Calculator</IonItem>
                     <IonItem>Ionic is fun with React! :)</IonItem>
                 </IonList>
             </IonContent>
