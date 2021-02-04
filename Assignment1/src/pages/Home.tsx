@@ -1,22 +1,20 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import HomeContainer from '../components/HomeContainer';
+import MenuContainer from '../components/MenuContainer';
 import './Home.css';
 
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Pay Calculator</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Pay Calculator</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <HomeContainer />
+        {/* <MenuContainer /> */}
       </IonContent>
     </IonPage>
   );
