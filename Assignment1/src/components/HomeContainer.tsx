@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
+import { IonContent, IonPage, IonInput, IonItem, IonLabel, IonList, IonButton } from '@ionic/react';
 
 interface ContainerProps { }
 
@@ -26,12 +26,12 @@ const HomeContainer: React.FC<ContainerProps> = () => {
       } else {
         regularPay = 40 * hourRate
         overtimePay = (hoursWorked - 40) * hourRate * 1.5
-        finalPay = regularPay + overtimePay 
+        finalPay = regularPay + overtimePay
         tax = finalPay * 0.18
       }
       setRegularPay(regularPay)
       setOvertimePay(overtimePay)
-      overtimePay == 0 ? setFinalPay(regularPay) : setFinalPay(finalPay)
+      overtimePay === 0 ? setFinalPay(regularPay) : setFinalPay(finalPay)
       setTax(Number((tax).toFixed(2)))
     } else {
       console.log("Please fill the required inputs!")
@@ -39,13 +39,18 @@ const HomeContainer: React.FC<ContainerProps> = () => {
   }
 
   const displayResults = () => {
+
+    var takeHomeMoney = 0
+    takeHomeMoney = Number((finalPay - tax).toFixed(2))
+
     return (
       <IonList>
+        <strong>Results</strong>
         <IonItem>Regular Pay : {regularPay}</IonItem>
         <IonItem>Overtime Pay : {overtimePay}</IonItem>
         <IonItem>Total Pay (Regular + Overtime, before tax) : {finalPay}</IonItem>
         <IonItem>Tax (Based on total pay) : {tax}</IonItem>
-        <IonItem>Take home after tax : {finalPay - tax}</IonItem>
+        <IonItem>Take home after tax : {takeHomeMoney}</IonItem>
       </IonList>
     )
   }
@@ -59,11 +64,6 @@ const HomeContainer: React.FC<ContainerProps> = () => {
 
   return (
     <MyPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Pay Calculator</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent>
         <IonList>
           <IonItem>
@@ -79,6 +79,8 @@ const HomeContainer: React.FC<ContainerProps> = () => {
           <IonButton color="success" onClick={() => calculateClicked()}>Calculate</IonButton>
           <IonButton color="danger" onClick={() => clearValues()}>Clear</IonButton>
         </IonItem>
+      </IonContent>
+      <IonContent>
         {finalPay > 0 ? displayResults() : <p></p>}
       </IonContent>
     </MyPage>
@@ -87,8 +89,6 @@ const HomeContainer: React.FC<ContainerProps> = () => {
 
 const MyPage = styled(IonPage)`
     margin: auto;
-    border: 1px solid red;
-    padding: 10px;
     text-align: center;
 `;
 
