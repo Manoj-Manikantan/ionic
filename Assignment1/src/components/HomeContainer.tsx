@@ -75,7 +75,7 @@ const HomeContainer: React.FC<ContainerProps> = () => {
             <IonInput type="number" value={hoursWorked} onIonChange={e => setHoursWorked(parseInt(e.detail.value!))}></IonInput>
           </IonItem>
           <IonItem>
-            <IonLabel position="floating">Please enter the hourly rate</IonLabel>
+            <IonLabel position="floating">Please enter the hourly rate</IonLabel>ç
             <IonInput type="number" value={hourRate} onIonChange={e => setHourRate(parseInt(e.detail.value!))}></IonInput>
           </IonItem>
         </IonList>

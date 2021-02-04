@@ -1,3 +1,9 @@
+/**
+ * Name : Manoj Manikantan Muralidharan 
+ * Student Id : 301067347
+ * Assigment 1 - Pay Calculator
+ */
+
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
