@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div id="appIcon">
+    <img src="assets/app_logo.png" alt="appIcon">
+    <h2>24x7 Medical Support</h2>
+  </div>
+  <form id="form">
+    <ion-item>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input placeholder="User Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input placeholder="Email Id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="key-outline"></ion-icon>
+      <ion-input type="Password" placeholder="Password"></ion-input>
+    </ion-item>
+    <ion-button expand="block">Register</ion-button>
+  </form>
+  <p id="bottomPara">Already have an account? <a id="login" [routerLink]="['/login']">Sign In</a></p>
 </ion-content>
