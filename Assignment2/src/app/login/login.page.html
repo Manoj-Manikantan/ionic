@@ -18,7 +18,7 @@
       <ion-icon name="key-outline"></ion-icon>
       <ion-input type="Password" placeholder="Password"></ion-input>
     </ion-item>
-    <ion-button expand="block">Sign In</ion-button>
+    <ion-button expand="block" [routerLink]="['/home']">Sign In</ion-button>
   </form>
   <p id="bottomPara">Don't have an account? <a id="register" [routerLink]="['/register']">Register</a></p>
 </ion-content>
