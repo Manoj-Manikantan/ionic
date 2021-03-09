@@ -1,15 +1,21 @@
-<ion-header [translucent]="true">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Patient List</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <img src="assets/app_logo.png" alt="appIcon" >
-    <p id="title">24x7 Medical Support</p>
-  </div>
+  <ion-list>
+    <ion-item *ngFor="let patient of patients" lines="none">
+      <ion-avatar slot="start">
+        <ion-img src="assets/ic_avatar_male.png"></ion-img>
+      </ion-avatar>
+      <div id="colFlex">
+        <ion-label id="pName">Name : {{patient.name}}</ion-label>
+        <ion-label id="pAge">Age : {{patient.age}}</ion-label>
+        <ion-label id="pNum">Mobile : {{patient.phNum}}</ion-label>
+      </div>
+      <ion-icon slot="end" name="chevron-forward-outline" style="color: black;"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,16 +1,47 @@
-ion-content{
-  --ion-background-color: #ffffff;
-}
-#container {
+ion-title{
   text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  color: black;    
 }
 
-#title {
-  font-size: 18px;
-  color: #4dd0e1; 
+ion-content{
+  --ion-background-color: #ffffff;
+
+  ion-label{
+    color: black;
+  }
+
+  ion-item{
+    color: black;
+    padding: 5px;
+    border-bottom: 0.7px solid;
+    border-bottom-color: #78909c;
+    
+    #colFlex{
+      display:flex;
+      flex-direction: column;
+    }
+    
+    #pName{
+      font-family: "Times New Roman", Times, serif;
+      font-size: 18px;
+      color: #78909c;
+      font-weight: 700;
+    }
+
+    #pAge{
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14px;
+      color: #78909c;
+    }
+
+    #pNum{
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14px;
+      color: #78909c;
+      margin-bottom: 10px;
+    }
+
+  }
+
 }
+
