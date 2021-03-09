@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addPatient</ion-title>
+    <ion-title>Add Patient</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <div id="addPatientIcon">
+    <img src="assets/ic_addPatient.png" alt="addPatient">
+  </div>
+  <form id="form">
+    <ion-item>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input placeholder="Full Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input type="Email" placeholder="Email Id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call-outline"></ion-icon>
+      <ion-input type="Number" placeholder="Mobile No"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Age"></ion-input>
+      <ion-input placeholder="Blood Type"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-input placeholder="Address"></ion-input>
+    </ion-item>
+    <ion-button expand="block" [routerLink]="['/home']">Add Patient</ion-button>
+  </form>
 </ion-content>
