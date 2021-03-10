@@ -12,17 +12,20 @@
   <form id="form">
     <ion-item>
       <ion-icon name="person-circle-outline"></ion-icon>
-      <ion-input placeholder="User Name"></ion-input>
+      <ion-input type="text" placeholder="User Name" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}">
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="mail-outline"></ion-icon>
-      <ion-input placeholder="Email Id"></ion-input>
+      <ion-input type="Email" placeholder="Email Id" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="key-outline"></ion-icon>
-      <ion-input type="Password" placeholder="Password"></ion-input>
+      <ion-input type="Password" placeholder="Password" [(ngModel)]="user.password"
+        [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
-    <ion-button expand="block">Register</ion-button>
+    <ion-button expand="block" (click)="onRegisterClick()">Register</ion-button>
   </form>
   <p id="bottomPara">Already have an account? <a id="login" [routerLink]="['/login']">Sign In</a></p>
 </ion-content>
