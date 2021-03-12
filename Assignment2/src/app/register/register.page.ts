@@ -20,7 +20,7 @@ export class RegisterPage {
   url = "http://192.168.0.114:3009/doctor/signup"
 
   onRegisterClick() {
-    if ((this.user.Name != null) && (this.user.Email != null) && (this.user.Pass != null)) {
+    if (this.user.userName && this.user.email && this.user.password) {
       this.http.post(this.url, this.user).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
           alert("Registration successful!")
