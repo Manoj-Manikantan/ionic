@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
     if (this.user.userName && this.user.password) {
       this.http.post(this.url, this.user).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
-          this.router.navigateByUrl('home')
+          this.router.navigate(['/home', { id: data.doctor._id }]);
           alert("Login successful!")
         } else if (data.statusCode == "201") {
           alert("Username or password incorrect.")

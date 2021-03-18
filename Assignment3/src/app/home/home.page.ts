@@ -1,5 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from './home.model';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { envUrl } from '../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,74 +13,23 @@ import { Patient } from './home.model';
 })
 export class HomePage implements OnInit {
 
-  patients: Patient[] = [
-    {
-      name: "John Wick",
-      age: "32",
-      phNum: "6781235566",
-    },
-    {
-      name: "Dave Batista",
-      age: "45",
-      phNum: "9123556612"
-    },
-    {
-      name: "Shane Warne",
-      age: "28",
-      phNum: "6784209996"
-    },
-    {
-      name: "John Wick",
-      age: "32",
-      phNum: "6781235566",
-    },
-    {
-      name: "Dave Batista",
-      age: "45",
-      phNum: "9123556612"
-    },
-    {
-      name: "Shane Warne",
-      age: "28",
-      phNum: "6784209996"
-    },
-    {
-      name: "John Wick",
-      age: "32",
-      phNum: "6781235566",
-    },
-    {
-      name: "Dave Batista",
-      age: "45",
-      phNum: "9123556612"
-    },
-    {
-      name: "Shane Warne",
-      age: "28",
-      phNum: "6784209996"
-    },{
-      name: "John Wick",
-      age: "32",
-      phNum: "6781235566",
-    },
-    {
-      name: "Dave Batista",
-      age: "45",
-      phNum: "9123556612"
-    },
-    {
-      name: "Shane Warne",
-      age: "28",
-      phNum: "6784209996"
-    }
-  ];
+  doctorId: string;
+  url: string;
+  patients: Patient[];
 
-
-  constructor() { }
-
+  constructor(
+    public navCtrl: NavController,
+    private router: Router,
+    private http: HttpClient,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-
+    this.doctorId = this.route.snapshot.paramMap.get('id')
+    this.url = envUrl + "patients"
+    this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
+      this.patients = data.patients
+      console.log(data.statusCode)
+    });
   }
-
 }
