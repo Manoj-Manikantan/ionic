@@ -1,0 +1,45 @@
+ion-title{
+    text-align: center;
+    color: black;
+    margin-right: 5%;  
+}
+
+ion-content{
+    --ion-background-color: #ffffff;
+  
+    ion-label{
+      color: black;
+    }
+
+    ion-item{
+        display:flex;
+        flex-direction: row;
+        border-bottom: 0.7px solid;
+        border-bottom-color: #78909c;
+        padding: 10px;
+    }
+
+    #colFlex{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .headings{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 16px;
+        color: #78909c;
+        font-weight: 600;
+        padding-right: 25px;
+        text-align: left;
+    }
+
+    .infos{
+        font-family: "Times New Roman", Times, serif;
+        font-size: 15px;
+        color: #78909c;
+        font-weight: 400;
+        margin-top: 1%;
+        padding-right: 10px;
+    }
+
+}
