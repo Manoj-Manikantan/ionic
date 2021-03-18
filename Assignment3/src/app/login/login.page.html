@@ -12,13 +12,15 @@
   <form id="form">
     <ion-item>
       <ion-icon name="person-circle-outline"></ion-icon>
-      <ion-input placeholder="User Name"></ion-input>
+      <ion-input type="text" placeholder="User Name" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}">
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="key-outline"></ion-icon>
-      <ion-input type="Password" placeholder="Password"></ion-input>
+      <ion-input type="Password" placeholder="Password" [(ngModel)]="user.password"
+        [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
-    <ion-button expand="block" [routerLink]="['/home']">Sign In</ion-button>
+    <ion-button expand="block" (click)="onLoginClick()">Sign In</ion-button>
   </form>
   <p id="bottomPara">Don't have an account? <a id="register" [routerLink]="['/register']">Register</a></p>
 </ion-content>

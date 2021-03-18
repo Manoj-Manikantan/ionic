@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { envUrl } from '../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -17,13 +18,13 @@ export class RegisterPage {
     private http: HttpClient
   ) { }
 
-  url = "http://192.168.0.114:3009/doctor/signup"
+  url = envUrl + "doctor/signup"
 
   onRegisterClick() {
     if (this.user.userName && this.user.email && this.user.password) {
       this.http.post(this.url, this.user).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
-          alert("Registration successful!")
+          alert("Registration successful! Please proceed to Sign In Screen")
         } else if (data.statusCode == "201") {
           alert("Email Id already in use.")
         }
