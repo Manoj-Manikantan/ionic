@@ -29,7 +29,18 @@ export class HomePage implements OnInit {
     this.url = envUrl + "patients"
     this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
       this.patients = data.patients
-      console.log(data.statusCode)
     });
   }
+
+  ionViewWillEnter() {
+    console.log(this.doctorId)
+    this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
+      this.patients = data.patients
+    });
+  }
+
+  onAddPatientClick() {
+    this.router.navigate(['/add-patient', { id: this.doctorId }]);
+  }
+
 }

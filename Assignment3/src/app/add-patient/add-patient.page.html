@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="chevron-back-outline" id="startIcon" [routerLink]="['/home']" style="color: black; height: 25px; width: 25px; margin-left: 2%;" ></ion-icon>
+    <ion-icon slot="start" name="chevron-back-outline" id="startIcon" [routerLink]="['/home']"
+      style="color: black; height: 25px; width: 25px; margin-left: 2%;" (click)="onBackClick()"  ></ion-icon>
     <ion-title>Add Patient</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,24 +12,39 @@
   <form id="form">
     <ion-item>
       <ion-icon name="person-circle-outline"></ion-icon>
-      <ion-input placeholder="Full Name"></ion-input>
+      <ion-input type="text" placeholder="Full Name" [(ngModel)]="patient.fullName"
+        [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="mail-outline"></ion-icon>
-      <ion-input type="Email" placeholder="Email Id"></ion-input>
+      <ion-input type="Email" placeholder="Email Id" [(ngModel)]="patient.email" [ngModelOptions]="{standalone: true}">
+      </ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="call-outline"></ion-icon>
-      <ion-input type="Number" placeholder="Mobile No"></ion-input>
+      <ion-input type="Number" placeholder="Mobile No" [(ngModel)]="patient.mobileNum"
+        [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" placeholder="Age"></ion-input>
-      <ion-input placeholder="Blood Type"></ion-input>
+      <ion-input type="number" placeholder="Age" [(ngModel)]="patient.age" [ngModelOptions]="{standalone: true}">
+      </ion-input>
+      <ion-select name="bloodType" placeholder="Select Blood group" [(ngModel)]="patient.bloodType"
+        [ngModelOptions]="{standalone: true}">
+        <ion-select-option value="brown">A +ve</ion-select-option>
+        <ion-select-option value="blonde">A -ve</ion-select-option>
+        <ion-select-option value="black">B +ve</ion-select-option>
+        <ion-select-option value="red">B -ve</ion-select-option>
+        <ion-select-option value="brown">AB +ve</ion-select-option>
+        <ion-select-option value="blonde">AB -ve</ion-select-option>
+        <ion-select-option value="black">O +ve</ion-select-option>
+        <ion-select-option value="red">O -ve</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-icon name="home-outline"></ion-icon>
-      <ion-input placeholder="Address"></ion-input>
+      <ion-input type="text" placeholder="Address" [(ngModel)]="patient.address" [ngModelOptions]="{standalone: true}">
+      </ion-input>
     </ion-item>
-    <ion-button expand="block" [routerLink]="['/home']">Add Patient</ion-button>
+    <ion-button expand="block" (click)="onAddPatientClick()" >Add Patient</ion-button>
   </form>
 </ion-content>
