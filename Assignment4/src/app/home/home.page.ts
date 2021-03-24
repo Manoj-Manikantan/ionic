@@ -33,7 +33,6 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log(this.doctorId)
     this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
       this.patients = data.patients
     });
@@ -43,4 +42,7 @@ export class HomePage implements OnInit {
     this.router.navigate(['/add-patient', { id: this.doctorId }]);
   }
 
+  onClickPatientInfo(patientId: string){
+    this.router.navigate(['/patient-info', { patientId: patientId, doctorId: this.doctorId }]);
+  }
 }

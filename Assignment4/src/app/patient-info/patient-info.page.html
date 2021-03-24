@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="chevron-back-outline" id="startIcon" [routerLink]="['/home']"
-      style="color: black; height: 25px; width: 25px; margin-left: 2%;"></ion-icon>
+    <ion-icon slot="start" (click)="onBackClick()" name="chevron-back-outline" id="startIcon" style="color: black; height: 25px; width: 25px; margin-left: 2%;"></ion-icon>
     <ion-title>Patient Information</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +8,7 @@
 <ion-content>
   <div id="patientIcon">
     <img src="assets/ic_avatar_male.png" alt="patientIcon">
-    <ion-item class="pName" lines="none">John Wick</ion-item>
+    <ion-item class="pName" lines="none">{{fullName}}</ion-item>
   </div>
   <ion-item class="pNameLine" lines="none"></ion-item>
   <ion-grid>
@@ -18,7 +17,7 @@
         <div class="headings">Email Id:</div>
       </ion-col>
       <ion-col>
-        <div class="infos">johnwick@gmail.com</div>
+        <div class="infos">{{email}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -26,7 +25,7 @@
         <div class="headings">Mobile:</div>
       </ion-col>
       <ion-col>
-        <div class="infos">+1 678 123 5566</div>
+        <div class="infos">{{mobileNum}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -34,7 +33,7 @@
         <div class="headings">Age:</div>
       </ion-col>
       <ion-col>
-        <div class="infos">32</div>
+        <div class="infos">{{age}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -42,7 +41,7 @@
         <div class="headings">Blood Group:</div>
       </ion-col>
       <ion-col>
-        <div class="infos">A+</div>
+        <div class="infos">{{bloodType}}</div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -50,7 +49,7 @@
         <div class="headings">Address:</div>
       </ion-col>
       <ion-col>
-        <div class="infos">12 Crescent Park Drive, ON M5V4T7</div>
+        <div class="infos">{{address}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
