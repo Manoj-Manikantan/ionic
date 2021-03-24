@@ -1,0 +1,31 @@
+ion-title{
+    text-align: center;
+    color: black;
+    margin-right: 5%;
+}
+
+ion-content {
+    --ion-background-color: #ffffff;
+
+    #form{
+        background-color: white;
+        margin-top: 12%;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        ion-item{
+            padding: 2px;
+            margin-bottom: 5%;
+        }
+
+        ion-input{
+            color: black;
+        }
+
+        ion-button{
+            margin-top: 85%;
+            color: white;
+            font-variant-caps: normal;
+        }
+    }    
+}

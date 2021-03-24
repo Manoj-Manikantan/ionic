@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="appIcon">
+    <img src="assets/app_logo.png" alt="appIcon">
+    <h2>24x7 Medical Support</h2>
+  </div>
+  <form id="form">
+    <ion-item>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input type="text" placeholder="User Name" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="key-outline"></ion-icon>
+      <ion-input type="Password" placeholder="Password" [(ngModel)]="user.password"
+        [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="onLoginClick()">Sign In</ion-button>
+  </form>
+  <p id="bottomPara">Don't have an account? <a id="register" [routerLink]="['/register']">Register</a></p>
+</ion-content>
