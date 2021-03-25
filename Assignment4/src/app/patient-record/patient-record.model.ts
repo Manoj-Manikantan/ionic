@@ -1,7 +1,7 @@
 export interface Record{
-    BP: string;
-    RR: string;
-    oxyLevel: string;
-    hRate: String;
-    pDate: String;
+    bloodPressure: string;
+    respiratoryRate: string;
+    oxygenLevel: string;
+    heartbeatRate: String;
+    date: String;
 }

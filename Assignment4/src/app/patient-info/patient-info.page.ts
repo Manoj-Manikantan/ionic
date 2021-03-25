@@ -47,4 +47,7 @@ export class PatientInfoPage implements OnInit {
     this.router.navigate(['/home', { id: this.doctorId }]);
   }
 
+  onViewRecordsClick(){
+    this.router.navigate(['/patient-record', { patientId: this.patientId, doctorId: this.doctorId }]);
+  }
 }

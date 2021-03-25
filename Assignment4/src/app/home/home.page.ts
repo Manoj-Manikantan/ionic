@@ -42,7 +42,7 @@ export class HomePage implements OnInit {
     this.router.navigate(['/add-patient', { id: this.doctorId }]);
   }
 
-  onClickPatientInfo(patientId: string){
+  onClickPatientInfo(patientId: string) {
     this.router.navigate(['/patient-info', { patientId: patientId, doctorId: this.doctorId }]);
   }
 }

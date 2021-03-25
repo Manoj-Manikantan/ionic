@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="chevron-back-outline" id="startIcon" [routerLink]="['/patient-info']"
+    <ion-icon slot="start" (click)="onBackButtonClick()" name="chevron-back-outline" id="startIcon"
       style="color: black; height: 25px; width: 25px; margin-left: 2%;"></ion-icon>
     <ion-title>Patient's Record</ion-title>
   </ion-toolbar>
@@ -16,18 +16,18 @@
         <ion-label class="headings">Heartbeat Rate:</ion-label>
       </div>
       <div id="colFlex">
-        <ion-label class="infos">{{record.BP}}</ion-label>
-        <ion-label class="infos">{{record.RR}}</ion-label>
-        <ion-label class="infos">{{record.oxyLevel}}</ion-label>
-        <ion-label class="infos">{{record.hRate}}</ion-label>
+        <ion-label class="infos">{{record.bloodPressure}} (X/Y mmHg)</ion-label>
+        <ion-label class="infos">{{record.respiratoryRate}} (X/min)</ion-label>
+        <ion-label class="infos">{{record.oxygenLevel}} (X%)</ion-label>
+        <ion-label class="infos">{{record.heartbeatRate}} (X/min)</ion-label>
       </div>
       <div id="colFlex">
-        <ion-label class="infos">{{record.pDate}}</ion-label>
+        <ion-label class="infos">{{record.date.substring(0, 10)}}</ion-label>
       </div>
     </ion-item>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink]="['/add-patient-record']">
+    <ion-fab-button (click)="onAddPatientRecordClick()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
