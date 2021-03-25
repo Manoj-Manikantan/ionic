@@ -30,7 +30,7 @@ export class PatientInfoPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.doctorId = this.route.snapshot.paramMap.get('doctorId')
+    this.doctorId = localStorage.getItem('userId')
     this.patientId = this.route.snapshot.paramMap.get('patientId')
     this.url = envUrl + "patients/detail"
     this.http.post(this.url, { patientId: this.patientId }).toPromise().then((data: any) => {
@@ -43,11 +43,11 @@ export class PatientInfoPage implements OnInit {
     });
   }
 
-  onBackClick(){
-    this.router.navigate(['/home', { id: this.doctorId }]);
+  onBackClick() {
+    this.router.navigate(['/home']);
   }
 
-  onViewRecordsClick(){
-    this.router.navigate(['/patient-record', { patientId: this.patientId, doctorId: this.doctorId }]);
+  onViewRecordsClick() {
+    this.router.navigate(['/patient-record', { patientId: this.patientId }]);
   }
 }

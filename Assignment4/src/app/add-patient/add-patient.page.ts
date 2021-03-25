@@ -24,7 +24,7 @@ export class AddPatientPage implements OnInit {
 
   ngOnInit() {
     this.url = envUrl + "addPatient"
-    this.doctorId = this.route.snapshot.paramMap.get('id')
+    this.doctorId = localStorage.getItem('userId')
     this.patient.doctorId = this.doctorId
   }
 
@@ -33,7 +33,7 @@ export class AddPatientPage implements OnInit {
       && this.patient.age && this.patient.bloodType && this.patient.address) {
       this.http.post(this.url, this.patient).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
-          this.router.navigate(['/home', { id: this.doctorId }]);
+          this.router.navigate(['/home']);
           alert("Patient added successfully!")
         }
       });
@@ -43,7 +43,7 @@ export class AddPatientPage implements OnInit {
   }
 
   onBackClick(){
-    this.router.navigate(['/home', { id: this.doctorId }]);
+    this.router.navigate(['/home']);
   }
 
 

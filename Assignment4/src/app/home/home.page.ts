@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.doctorId = this.route.snapshot.paramMap.get('id')
+    this.doctorId = localStorage.getItem('userId')
     this.url = envUrl + "patients"
     this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
       this.patients = data.patients
@@ -33,17 +33,17 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.doctorId = this.route.snapshot.paramMap.get('id')
+    this.doctorId = localStorage.getItem('userId')
     this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
       this.patients = data.patients
     });
   }
 
   onAddPatientClick() {
-    this.router.navigate(['/add-patient', { id: this.doctorId }]);
+    this.router.navigate(['/add-patient']);
   }
 
   onClickPatientInfo(patientId: string) {
-    this.router.navigate(['/patient-info', { patientId: patientId, doctorId: this.doctorId }]);
+    this.router.navigate(['/patient-info', { patientId: patientId }]);
   }
 }

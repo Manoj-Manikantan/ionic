@@ -6,7 +6,6 @@ import { NavController } from '@ionic/angular';
 import { envUrl } from '../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-patient-record',
   templateUrl: './patient-record.page.html',
@@ -17,7 +16,6 @@ export class PatientRecordPage implements OnInit {
   records: Record[];
   url: string;
   patientId: string;
-  doctorId: string;
 
   constructor(
     public navCtrl: NavController,
@@ -27,7 +25,6 @@ export class PatientRecordPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.doctorId = this.route.snapshot.paramMap.get('doctorId')
     this.patientId = this.route.snapshot.paramMap.get('patientId')
     this.url = envUrl + "patients/getRecords"
     this.http.post(this.url, { patientId: this.patientId }).toPromise().then((data: any) => {
