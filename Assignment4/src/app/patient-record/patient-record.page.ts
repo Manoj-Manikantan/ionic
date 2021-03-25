@@ -29,17 +29,21 @@ export class PatientRecordPage implements OnInit {
   ngOnInit() {
     this.doctorId = this.route.snapshot.paramMap.get('doctorId')
     this.patientId = this.route.snapshot.paramMap.get('patientId')
-    console.log(this.doctorId)
-    console.log(this.patientId)
     this.url = envUrl + "patients/getRecords"
     this.http.post(this.url, { patientId: this.patientId }).toPromise().then((data: any) => {
       this.records = data.records
-      console.log(data.records)
+    });
+  }
+
+  ionViewWillEnter() {
+    this.patientId = this.route.snapshot.paramMap.get('patientId')
+    this.http.post(this.url, { patientId: this.patientId }).toPromise().then((data: any) => {
+      this.records = data.records
     });
   }
 
   onAddPatientRecordClick() {
-    this.router.navigate(['/add-patient-record', { id: this.patientId }]);
+    this.router.navigate(['/add-patient-record', { patientId: this.patientId }]);
   }
 
   onBackButtonClick(){

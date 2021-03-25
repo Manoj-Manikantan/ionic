@@ -33,6 +33,7 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.doctorId = this.route.snapshot.paramMap.get('id')
     this.http.post(this.url, { doctorId: this.doctorId }).toPromise().then((data: any) => {
       this.patients = data.patients
     });

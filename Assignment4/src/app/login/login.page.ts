@@ -11,7 +11,6 @@ import { envUrl } from '../../environments/environment';
 })
 export class LoginPage implements OnInit {
   user: any = {};
-
   constructor(
     public navCtrl: NavController,
     private router: Router,
@@ -28,6 +27,7 @@ export class LoginPage implements OnInit {
       this.http.post(this.url, this.user).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
           this.router.navigate(['/home', { id: data.doctor._id }]);
+          // this.router.navigate(['/home', { id: data.doctor._id }]);
           alert("Login successful!")
         } else if (data.statusCode == "201") {
           alert("Username or password incorrect.")

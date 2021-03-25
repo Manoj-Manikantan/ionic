@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon slot="start" name="chevron-back-outline" id="startIcon" [routerLink]="['/patient-record']"
+    <ion-icon slot="start" name="chevron-back-outline" id="startIcon" (click)="onBackButtonClick()"
       style="color: black; height: 25px; width: 25px; margin-left: 2%;"></ion-icon>
     <ion-title>Add Patient Record</ion-title>
   </ion-toolbar>
@@ -8,17 +8,17 @@
 <ion-content>
   <form id="form">
     <ion-item>
-      <ion-input placeholder="Blood Pressure (X/Y mmHg)"></ion-input>
+      <ion-input type="Number" [(ngModel)]="record.bloodPressure" [ngModelOptions]="{standalone: true}" placeholder="Blood Pressure (X/Y mmHg)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="Number" placeholder="Respiratory Rate (X/min)"></ion-input>
+      <ion-input type="Number" [(ngModel)]="record.respiratoryRate" [ngModelOptions]="{standalone: true}" placeholder="Respiratory Rate (X/min)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="Number" placeholder="Blood Oxygen Level (X%)"></ion-input>
+      <ion-input type="Number" [(ngModel)]="record.oxygenLevel" [ngModelOptions]="{standalone: true}" placeholder="Blood Oxygen Level (X%)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="Number" placeholder="Heartbeat Rate (X/min)"></ion-input>
+      <ion-input type="Number" [(ngModel)]="record.heartbeatRate" [ngModelOptions]="{standalone: true}" placeholder="Heartbeat Rate (X/min)"></ion-input>
     </ion-item>
-    <ion-button expand="block" [routerLink]="['/patient-record']">Add Patient Record</ion-button>
+    <ion-button expand="block" (click)="onAddPatientRecordClick()" >Add Patient Record</ion-button>
   </form>
 </ion-content>
