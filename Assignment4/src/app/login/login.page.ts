@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { envUrl } from '../../environments/environment';
-// import { ionAlert } from '../ionAlert/ionAlert'
+import { AlertBoxService } from '../services/alert-box.service'
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private http: HttpClient,
-    // private ionAlerts: ionAlert
+    private alertBox: AlertBoxService
   ) { }
 
   ngOnInit() {
@@ -31,16 +31,15 @@ export class LoginPage implements OnInit {
         if (data.statusCode == "200") {
           this.router.navigate(['/home']);
           localStorage.setItem('userId', data.doctor._id)
-          alert("Login successful!")
+          this.alertBox.presentAlert("Success", "Login successful!")
         } else if (data.statusCode == "201") {
-          alert("Username or password incorrect.")
+          this.alertBox.presentAlert("Input Error", "Username or password incorrect.")
         } else if (data.statusCode == "202") {
-          alert("Username does not exist, Please register.")
-          // this.ionAlerts.showAlert("Input Error", "Username does not exist, Please register.")
+          this.alertBox.presentAlert("Input Error", "Username does not exist, Please proceed to register screen.")
         }
       });
     } else {
-      alert("Please fill all the input fields.")
+      this.alertBox.presentAlert("Input Error", "Please fill all the input fields.")
     }
   }
 }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { envUrl } from '../../environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { AlertBoxService } from '../services/alert-box.service'
 
 @Component({
   selector: 'app-add-patient',
@@ -19,7 +19,7 @@ export class AddPatientPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private http: HttpClient,
-    private route: ActivatedRoute
+    private alertBox: AlertBoxService
   ) { }
 
   ngOnInit() {
@@ -34,17 +34,15 @@ export class AddPatientPage implements OnInit {
       this.http.post(this.url, this.patient).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
           this.router.navigate(['/home']);
-          alert("Patient added successfully!")
+          this.alertBox.presentAlert("Success", "Patient added successfully!")
         }
       });
     } else {
-      alert("Please fill all the input fields.")
+      this.alertBox.presentAlert("Input Error", "Please fill all the input fields.")
     }
   }
 
-  onBackClick(){
+  onBackClick() {
     this.router.navigate(['/home']);
   }
-
-
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { envUrl } from '../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
+import { AlertBoxService } from '../services/alert-box.service'
 
 @Component({
   selector: 'app-add-patient-record',
@@ -19,7 +20,8 @@ export class AddPatientRecordPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertBox: AlertBoxService
   ) { }
 
   ngOnInit() {
@@ -34,17 +36,15 @@ export class AddPatientRecordPage implements OnInit {
       this.http.post(this.url, this.record).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
           this.router.navigate(['/patient-record', { patientId: this.patientId }]);
-          alert("Patient added successfully!")
+          this.alertBox.presentAlert("Success", "Patient added successfully!")
         }
       });
     } else {
-      alert("Please fill all the input fields.")
+      this.alertBox.presentAlert("Input Error", "Please fill all the input fields.")
     }
   }
 
-  onBackButtonClick(){
+  onBackButtonClick() {
     this.router.navigate(['/patient-record', { patientId: this.patientId }]);
   }
-
-
 }

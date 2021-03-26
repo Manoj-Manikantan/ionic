@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { envUrl } from '../../environments/environment';
+import { AlertBoxService } from '../services/alert-box.service'
 
 @Component({
   selector: 'app-register',
@@ -14,8 +14,8 @@ export class RegisterPage {
 
   constructor(
     public navCtrl: NavController,
-    private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private alertBox: AlertBoxService
   ) { }
 
   url = envUrl + "doctor/signup"
@@ -24,13 +24,14 @@ export class RegisterPage {
     if (this.user.userName && this.user.email && this.user.password) {
       this.http.post(this.url, this.user).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
-          alert("Registration successful! Please proceed to Sign In Screen")
+          this.alertBox.presentAlert("Success", "Registration successful! Please proceed to Sign In Screen.")
         } else if (data.statusCode == "201") {
           alert("Email Id already in use.")
+          this.alertBox.presentAlert("Input Error", "Email Id already in use.")
         }
       });
     } else {
-      alert("Please fill all the input fields.")
+      this.alertBox.presentAlert("Input Error", "Please fill all the input fields.")
     }
   }
 }
