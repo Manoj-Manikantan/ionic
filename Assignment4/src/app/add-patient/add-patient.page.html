@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-icon slot="start" name="chevron-back-outline" id="startIcon" [routerLink]="['/home']"
-      style="color: black; height: 25px; width: 25px; margin-left: 2%;" (click)="onBackClick()"  ></ion-icon>
+      style="color: black; height: 25px; width: 25px; margin-left: 2%;"></ion-icon>
     <ion-title>Add Patient</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -45,6 +45,6 @@
       <ion-input type="text" placeholder="Address" [(ngModel)]="patient.address" [ngModelOptions]="{standalone: true}">
       </ion-input>
     </ion-item>
-    <ion-button expand="block" (click)="onAddPatientClick()" >Add Patient</ion-button>
+    <ion-button expand="block" (click)="onAddPatientClick()">Add Patient</ion-button>
   </form>
 </ion-content>

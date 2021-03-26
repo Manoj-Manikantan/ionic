@@ -12,10 +12,11 @@ export class AlertBoxService {
 
   async presentAlert(title: string, mssg: string) {
     const alert = await this.alertCtrl.create({
-        header: title,
-        message: mssg,
-        buttons: ['OK']
+      header: title,
+      message: mssg,
+      buttons: ['OK']
     });
     await alert.present();
-}
+    await alert.onDidDismiss();
+  }
 }

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canLoad: [AuthGuard]
   },
   {
     path: '',
@@ -13,31 +15,35 @@ const routes: Routes = [
   },
   {
     path: 'splash',
-    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+    loadChildren: () => import('./splash/splash.module').then(m => m.SplashPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'patient-info',
-    loadChildren: () => import('./patient-info/patient-info.module').then( m => m.PatientInfoPageModule)
+    loadChildren: () => import('./patient-info/patient-info.module').then(m => m.PatientInfoPageModule),
+    canLoad: [AuthGuard]
   },
   {
     path: 'add-patient',
-    loadChildren: () => import('./add-patient/add-patient.module').then( m => m.AddPatientPageModule)
+    loadChildren: () => import('./add-patient/add-patient.module').then(m => m.AddPatientPageModule),
+    canLoad: [AuthGuard]
   },
   {
     path: 'patient-record',
-    loadChildren: () => import('./patient-record/patient-record.module').then( m => m.PatientRecordPageModule)
+    loadChildren: () => import('./patient-record/patient-record.module').then(m => m.PatientRecordPageModule),
+    canLoad: [AuthGuard]
   },
   {
     path: 'add-patient-record',
-    loadChildren: () => import('./add-patient-record/add-patient-record.module').then( m => m.AddPatientRecordPageModule)
+    loadChildren: () => import('./add-patient-record/add-patient-record.module').then(m => m.AddPatientRecordPageModule),
+    canLoad: [AuthGuard]
   },
 ];
 

@@ -33,16 +33,13 @@ export class AddPatientPage implements OnInit {
       && this.patient.age && this.patient.bloodType && this.patient.address) {
       this.http.post(this.url, this.patient).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
-          this.router.navigate(['/home']);
-          this.alertBox.presentAlert("Success", "Patient added successfully!")
+          this.alertBox.presentAlert("Success", "Patient added successfully!").then(() => {
+            this.router.navigate(['/home']);
+          });
         }
       });
     } else {
       this.alertBox.presentAlert("Input Error", "Please fill all the input fields.")
     }
-  }
-
-  onBackClick() {
-    this.router.navigate(['/home']);
   }
 }

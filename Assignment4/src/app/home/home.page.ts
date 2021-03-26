@@ -4,7 +4,7 @@ import { Patient } from './home.model';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { envUrl } from '../../environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private http: HttpClient,
-    private route: ActivatedRoute
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -45,5 +45,33 @@ export class HomePage implements OnInit {
 
   onClickPatientInfo(patientId: string) {
     this.router.navigate(['/patient-info', { patientId: patientId }]);
+  }
+
+  onLogoutClick() {
+    this.presentAlertConfirm()
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Are you sure you want to logout?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            localStorage.setItem('authenticated', '0')
+            this.router.navigate(['/login']);
+            console.log('Confirm Okay');
+          }
+        }, {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Confirm Cancel!');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }
