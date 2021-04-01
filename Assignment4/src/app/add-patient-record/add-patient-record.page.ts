@@ -35,7 +35,7 @@ export class AddPatientRecordPage implements OnInit {
       && this.record.heartbeatRate) {
       this.http.post(this.url, this.record).toPromise().then((data: any) => {
         if (data.statusCode == "200") {
-          this.alertBox.presentAlert("Success", "Patient added successfully!").then(() => {
+          this.alertBox.presentAlert("Success", "Patient record added successfully!").then(() => {
             this.router.navigate(['/patient-record', { patientId: this.patientId }]);
           });
         }
